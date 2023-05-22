@@ -1,5 +1,4 @@
-# eslogrus
-an es hook for logrus
+# eslogrus —— an es hook for logrus
 
 一个简单的基于[elasticsearch](github.com/elastic/go-elasticsearch)的钩子，对[logrus](github.com/sirupsen/logrus)日志包进行收集作用
 
