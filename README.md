@@ -79,16 +79,26 @@ logger.SetFormatter(&logrus.JSONFormatter{
 // 其他设置...
 ```
 
-- 添加hook
+- 新建一个hook
+
+```go
+hook, err := NewElasticHook(esClient, "localhost", logrus.DebugLevel, "my_index")
+if err != nil {
+    fmt.Println("err", err)
+}
+```
+
+- 日志对象添加hook
 
 ```go
 logger.AddHook(hook)
 logger.Error("这是一个测试情况")
 ```
 
-
 - 查询结果
 
 ```shell
 curl --location 'http://localhost:9200/my_index/_search'\?pretty
 ```
+
+详细可以看test文件
