@@ -38,6 +38,11 @@ type IndexNameFunc func() string
 
 type fireFunc func(entry *logrus.Entry, hook *ElasticHook) error
 
+// NewElasticHook
+// client is an elastic client
+// host is the elastic's host
+// level is the level of logrus
+// index is the es index you wanna create message in. by the way , if the index don't exist, the esapi will create index automatically
 func NewElasticHook(client *elastic.Client, host string, level logrus.Level, index string) (*ElasticHook, error) {
 	return NewElasticHookWithFunc(client, host, level, func() string { return index })
 }
