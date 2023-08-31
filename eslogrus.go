@@ -100,6 +100,10 @@ func createMessage(entry *logrus.Entry, hook *ElasticHook) *message {
 func syncFireFunc(entry *logrus.Entry, hook *ElasticHook) error {
 	data, err := json.Marshal(createMessage(entry, hook))
 
+	if err != nil {
+		return err
+	}
+
 	req := esapi.IndexRequest{
 		Index:   hook.index(),
 		Body:    bytes.NewReader(data),
